@@ -1,0 +1,27 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+
+name: my_train_lr
+display_name: Train_LR
+type: command
+
+inputs:
+  X_train: 
+    type: uri_file
+  y_train:
+    type: uri_file
+
+outputs:
+  model_output:
+    type: uri_file
+  model_pkl:
+    type: uri_folder
+    mode: rw_mount
+
+code: ./train_LR_src
+environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu:1
+command: >-
+  python train_LR.py
+  --X_train ${{inputs.X_train}} 
+  --y_train ${{inputs.y_train}} 
+  --model_output ${{outputs.model_output}}
+  --model_pkl ${{outputs.model_pkl}}

@@ -1,0 +1,40 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+
+name: my_train_dt
+display_name: Train_DT
+type: command
+
+inputs:
+  X_train: 
+    type: uri_file
+  y_train:
+    type: uri_file
+  criterion:
+    type: string
+    enum:
+        - "gini"
+        - "log_loss"
+        - "entropy"
+  min_samples_split:
+    type: integer
+  max_depth:
+    type: integer
+
+outputs:
+  model_output:
+    type: uri_file
+  model_pkl:
+    type: uri_folder
+    mode: rw_mount
+
+code: ./train_DT_src
+environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu:1
+command: >-
+  python train_DT.py
+  --X_train ${{inputs.X_train}} 
+  --y_train ${{inputs.y_train}}
+  --criterion ${{inputs.criterion}}
+  --min_samples_split ${{inputs.min_samples_split}}
+  --max_depth ${{inputs.max_depth}}  
+  --model_output ${{outputs.model_output}}
+  --model_pkl ${{outputs.model_pkl}}

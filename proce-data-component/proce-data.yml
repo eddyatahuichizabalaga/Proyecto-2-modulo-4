@@ -1,0 +1,24 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+
+name: my_proce_data
+display_name: Proce_data
+type: command
+
+inputs:
+  data: 
+    type: uri_file
+
+outputs:
+  data_filtrado:
+    type: uri_file
+  
+  imagen_correlacion:
+    type: uri_file
+
+code: ./proce-data_src
+environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu:1
+command: >-
+  python proce-data.py 
+  --data ${{inputs.data}} 
+  --data_filtrado ${{outputs.data_filtrado}}
+  --imagen_correlacion ${{outputs.imagen_correlacion}}
