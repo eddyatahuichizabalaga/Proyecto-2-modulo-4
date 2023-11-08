@@ -6,6 +6,7 @@ Este proyecto tiene como objetivo predecir la potabilidad del agua utilizando el
 ## Procedimiento
 1. Identificación y categorización de las partes relevantes del Jupyter Notebook para el pipeline.
 2. Diseño y creación de los componentes necesarios para el pipeline utilizando el SDK de Azure ML, en este caso se utilizaran 6 componentes donde:
+   
     - El primer compoente se encargara de realizar un filtrado y el procesamiento del dataset descargado para tener un dataset limpio y sin valores nulos.
    
     - El segundo componente se encarga de realizar la division del data para los componentes de entrenamiento (train_dt y train_lr), validacion (Score) y evaluacion (Eval).
