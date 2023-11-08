@@ -6,15 +6,15 @@ Este proyecto tiene como objetivo predecir la potabilidad del agua utilizando el
 ## Procedimiento
 1. Identificación y categorización de las partes relevantes del Jupyter Notebook para el pipeline.
 2. Diseño y creación de los componentes necesarios para el pipeline utilizando el SDK de Azure ML, en este caso se utilizaran 6 componentes donde:
-   2.1. El primer compoente se encargara de realizar un filtrado y el procesamiento del dataset descargado para tener un dataset limpio y sin valores nulos.
+    - El primer compoente se encargara de realizar un filtrado y el procesamiento del dataset descargado para tener un dataset limpio y sin valores nulos.
    
-   2.2. El segundo componente se encarga de realizar la division del data para los componentes de entrenamiento (train_dt y train_lr), validacion (Score) y evaluacion (Eval).
+    - El segundo componente se encarga de realizar la division del data para los componentes de entrenamiento (train_dt y train_lr), validacion (Score) y evaluacion (Eval).
    
-   2.3. El tercer y cuarto componente es el encargado de realizar el entrenamiento del modelo, en este caso se realizaran dos componentes de entrenamiento (LogisticRegression y DecisionTreeClassifier).
+    - El tercer y cuarto componente es el encargado de realizar el entrenamiento del modelo, en este caso se realizaran dos componentes de entrenamiento (LogisticRegression y DecisionTreeClassifier).
    
-   2.4. El quito componente realizara el procedimiento de validacion (Score), este componente se utilizara dos veces para cada uno de los entrenamientos.
+    - El quito componente realizara el procedimiento de validacion (Score), este componente se utilizara dos veces para cada uno de los entrenamientos.
    
-   2.5. el sexto compoente realizara el procedimiento de evalucion (Eval), este componente se utilizara dos veces para cada uno de los entrenamientos.
+    - el sexto compoente realizara el procedimiento de evalucion (Eval), este componente se utilizara dos veces para cada uno de los entrenamientos.
    
 4. Creación de un pipeline en Azure ML conectando los componentes previamente diseñados, como se puede observar en el archivo "" se crearon utilizaron 8 compoentes excluyendo el dataset, pero se utilizo dos veces el componente de validacion (Score) y evaluacion(Eval).
 6. Las salidas del pipeline que se encuentran en la carpeta "pipeline_output/named-outputs" que incluyen:
